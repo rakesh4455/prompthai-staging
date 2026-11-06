@@ -1,0 +1,19 @@
+{
+  "kind": "content",
+  "batch_id": "pilot-content-v1",
+  "items": [
+    {
+      "key": "deployment-pilot-guide-v1",
+      "type": "page",
+      "slug": "deployment-pilot-guide",
+      "title": "PromptHai import check",
+      "html": "<p>This private draft checks the file import process. It is not a published guide.</p>",
+      "excerpt": "Private deployment check.",
+      "meta": {
+        "rank_math_title": "PromptHai import check",
+        "rank_math_description": "Private draft used to check the PromptHai deployment process.",
+        "rank_math_focus_keyword": "PromptHai import check"
+      }
+    }
+  ]
+}
