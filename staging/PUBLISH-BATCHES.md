@@ -46,3 +46,14 @@ For each actual import append release tag, approved SHA-256 hashes, target, prev
 - Snippet #81 remains OFF. No health/validate/apply/replay call has been made to its new routes. No pilot page ID exists yet.
 - No media imported, private theme written/activated, or content published by this deployment setup.
 - Next: owner reviews/enables #81; then test the actual WordPress pilot and record results. Do not treat local mock tests as proof of end-to-end deployment.
+
+## 2026-11-06 — Enabled v1.0.0 health check blocked; v1.0.1 startup correction prepared
+
+- Owner reported snippet enabled. Authenticated post read confirmed snippet 81 publish/active status and the saved PHP source; no activation was performed by the agent.
+- GET /prompthai-deploy/v1/health returned rest_no_route (404); REST namespace listing confirmed the importer namespace absent. No import request was attempted and no pilot page/media was created.
+- Root cause reproduced locally: an unconditional PHP class declaration is known before an early class_exists check, so v1.0.0 returned before boot() registered its REST initialization hook. Earlier function-level tests missed startup.
+- v1.0.1 places the class declaration inside a conditional declaration and makes boot registration idempotent. Eight startup checks were added: hook registration, all five routes, five permission callbacks and safe repeat include. New regression check was confirmed to fail with the old guard.
+- PHP syntax check passed; 47 mock WordPress PHP checks and 11 Python tests passed. This remains local evidence, not a successful real WordPress pilot.
+- Corrected source SHA-256: 23cef0f5c57d4eef43e1ce733c3dc468df1b2bb70a6e44b37f119ac19c6871d6.
+- Next action: request the supported WPVibe update for existing snippet 81. An enabled-snippet edit may require owner approval; PHP saves land OFF and need owner re-enablement. Do not bypass either gate. Source preparation alone does not mean the corrected code has been saved or enabled on WordPress.
+- Pilot release manifest and its hash are unchanged. Existing active theme, private theme files, content, media and indexing settings were not changed.
