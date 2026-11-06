@@ -4,7 +4,7 @@ Build locally, review the output, stage a GitHub Release, then ask the PromptHai
 
 ## Current checkpoint
 
-Importer v1 and the local tools are ready for review. WPCode snippet #81 is saved on PromptHai and is OFF; only the owner may enable it. They have passed local PHP syntax checking, 39 PHP contract checks with a small WordPress substitute, and 11 Python builder checks. These are not a full WordPress integration test or a security certification. A real site pilot remains required after the owner enables the reviewed snippet.
+Importer v1.0.1 fixes a startup-registration defect discovered during the first live health check. The correction is prepared for review; see staging/PUBLISH-BATCHES.md for the latest snippet approval/enablement state. Only the owner may enable snippet #81. They have passed local PHP syntax checking, 47 PHP contract checks with a small WordPress substitute, and 11 Python builder checks. These are not a full WordPress integration test or a security certification. A real site pilot remains required after the owner enables the reviewed snippet.
 
 Target site: `https://sienna-ostrich-209432.hostingersite.com`.
 Repository: `rakesh4455/prompthai-staging`, public by owner approval.
