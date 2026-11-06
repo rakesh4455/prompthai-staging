@@ -34,3 +34,15 @@
 PromptHai only. Never store credentials, cookies, private reference photos or private preview links here. New content stays draft. Theme changes use the native private-draft writer. Never enable snippets automatically, bypass approvals, activate themes, change indexing, delete records or add scheduled workflows.
 
 For each actual import append release tag, approved SHA-256 hashes, target, previous/current snapshots, returned page/media IDs, per-item outcomes, local/site checks and approval/publication state. Reconcile partial failures before preparing a new batch; never blindly replay them.
+
+## 2026-11-06 — Pilot release staged; owner enable gate pending
+
+- Release: https://github.com/rakesh4455/prompthai-staging/releases/tag/pilot-content-v1 (pre-release).
+- Source commit: f264140a6e30694c6e6105382d5558d6fda3f118.
+- Uploaded manifest-content.json (567 bytes): SHA-256 9218b61920138775a18a9194953fdcf1476cf1a3febc3660ef727596f6481559.
+- Uploaded SHA256SUMS (88 bytes): SHA-256 c49462435962fe450e4c764bb0982b07d8298138f9a0e162cc49a7b25875af80.
+- GitHub's rendered asset digests matched the locally computed values for both files.
+- Importer source SHA-256: 4a74545997cb96ab74e49b911312b13b281d54d8398cbb79cae24129d67fb90f.
+- Snippet #81 remains OFF. No health/validate/apply/replay call has been made to its new routes. No pilot page ID exists yet.
+- No media imported, private theme written/activated, or content published by this deployment setup.
+- Next: owner reviews/enables #81; then test the actual WordPress pilot and record results. Do not treat local mock tests as proof of end-to-end deployment.
