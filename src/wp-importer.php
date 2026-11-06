@@ -1,17 +1,17 @@
 <?php
 /** PromptHai release importer. Install through WPCode, review, then enable manually. */
 defined('ABSPATH') || exit;
-if (class_exists('PH_Release_Importer_V1', false)) { return; }
+if (!class_exists('PH_Release_Importer_V1', false)) {
 
 final class PH_Release_Importer_V1 {
     const SITE = 'https://sienna-ostrich-209432.hostingersite.com';
     const REPO = 'rakesh4455/prompthai-staging';
     const DRAFT = 'prompthai-wpvibe-draft';
-    const VERSION = '1.0.0';
+    const VERSION = '1.0.1';
     const LOCK = '_phri_global_lock_v1';
     const META = array('ph_config','_plf_aliases','_plf_related_topics','_plf_prompt','_plf_requirements','_plf_outfit_default','_plf_setting_default','_plf_ratio_default','_plf_kind','_plf_video_url','_plf_instagram_at','_plf_featured_until','rank_math_title','rank_math_description','rank_math_focus_keyword');
 
-    public static function boot() { add_action('rest_api_init', array(__CLASS__, 'routes')); }
+    public static function boot() { static $booted=false;if ($booted) { return; }$booted=true;add_action('rest_api_init', array(__CLASS__, 'routes')); }
     public static function routes() {
         register_rest_route('prompthai-deploy/v1', '/health', array('methods'=>'GET','callback'=>array(__CLASS__,'health'),'permission_callback'=>array(__CLASS__,'permission')));
         register_rest_route('prompthai-deploy/v1', '/snapshot', array('methods'=>'POST','callback'=>array(__CLASS__,'snapshot_route'),'permission_callback'=>array(__CLASS__,'permission')));
@@ -249,5 +249,6 @@ final class PH_Release_Importer_V1 {
             return new WP_Error('phri_import',$e->getMessage(),array('status'=>409,'partial_results'=>$record?$record['results']:array(),'current_item'=>$record?$record['current_item']:null));
         } finally { if ($locked) { delete_option(self::LOCK); } }
     }
+}
 }
 PH_Release_Importer_V1::boot();
